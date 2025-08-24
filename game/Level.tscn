@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://4wv1m2pigswx"]
+[gd_scene load_steps=14 format=3 uid="uid://4wv1m2pigswx"]
 
-[ext_resource type="Script" uid="uid://lmcihwyr16ob" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="Texture2D" uid="uid://b5xt2jac1shhj" path="res://grass1.png" id="2_7jktm"]
-[ext_resource type="Texture2D" uid="uid://cjnobcrj0ht66" path="res://icon.svg" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://cc12my3fudb5h" path="res://mouse_clicked.gd" id="3_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://b6l5nn3pv3nc4" path="res://fence.png" id="3_j5wjh"]
-[ext_resource type="Script" uid="uid://rr2x0k14x7pc" path="res://sheep.gd" id="4_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://i0i1nkqqic8a" path="res://flagpost.png" id="4_vef74"]
-[ext_resource type="Texture2D" uid="uid://bf4untoam7oaj" path="res://sheep.png" id="5_ryrav"]
+[ext_resource type="Script" uid="uid://lmcihwyr16ob" path="res://game/game.gd" id="1_7mm0i"]
+[ext_resource type="Texture2D" uid="uid://b5xt2jac1shhj" path="res://assets/grass1.png" id="2_7k0uw"]
+[ext_resource type="Texture2D" uid="uid://b6l5nn3pv3nc4" path="res://assets/fence.png" id="3_ba402"]
+[ext_resource type="Texture2D" uid="uid://i0i1nkqqic8a" path="res://assets/flagpost.png" id="4_gonph"]
+[ext_resource type="Texture2D" uid="uid://cjnobcrj0ht66" path="res://icon.svg" id="5_8c4p7"]
+[ext_resource type="Script" uid="uid://cc12my3fudb5h" path="res://game/mouse_clicked.gd" id="6_btryw"]
+[ext_resource type="PackedScene" uid="uid://bsm5fyc441t35" path="res://game/Sheep.tscn" id="7_7k0uw"]
 
 [sub_resource type="Gradient" id="Gradient_ryrav"]
 colors = PackedColorArray(0.0823529, 0.109804, 0.0901961, 1, 0.0823529, 0.109804, 0.0901961, 1)
@@ -17,18 +16,18 @@ gradient = SubResource("Gradient_ryrav")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
 resource_name = "Grass"
-texture = ExtResource("2_7jktm")
+texture = ExtResource("2_7k0uw")
 texture_region_size = Vector2i(70, 64)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eow3j"]
-texture = ExtResource("3_j5wjh")
+texture = ExtResource("3_ba402")
 texture_region_size = Vector2i(70, 64)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5wjh"]
-texture = ExtResource("4_vef74")
-texture_region_size = Vector2i(70, 64)
+texture = ExtResource("4_gonph")
+texture_region_size = Vector2i(1, 1)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_mwb40"]
@@ -39,7 +38,7 @@ sources/2 = SubResource("TileSetAtlasSource_eow3j")
 sources/3 = SubResource("TileSetAtlasSource_j5wjh")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_80nbo")
+script = ExtResource("1_7mm0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1085.44, 547)
@@ -56,23 +55,8 @@ modulate = Color(0.799517, 0, 0.213619, 1)
 position = Vector2(826.164, 519.867)
 rotation = 0.876449
 scale = Vector2(0.169392, 0.169392)
-texture = ExtResource("2_e2o6t")
-script = ExtResource("3_fc0e3")
+texture = ExtResource("5_8c4p7")
+script = ExtResource("6_btryw")
 
-[node name="Sheep2" type="Sprite2D" parent="."]
-position = Vector2(855, 480)
-texture = ExtResource("5_ryrav")
-script = ExtResource("4_fc0e3")
-
-[node name="SheepGoTo" type="Sprite2D" parent="Sheep2"]
-visible = false
-texture = ExtResource("5_ryrav")
-
-[node name="Sheep" type="Sprite2D" parent="."]
-position = Vector2(964, 537)
-texture = ExtResource("5_ryrav")
-script = ExtResource("4_fc0e3")
-
-[node name="SheepGoTo" type="Sprite2D" parent="Sheep"]
-visible = false
-texture = ExtResource("5_ryrav")
+[node name="Sheep" parent="." instance=ExtResource("7_7k0uw")]
+position = Vector2(961, 538)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsm5fyc441t35"]
+
+[ext_resource type="Texture2D" uid="uid://bf4untoam7oaj" path="res://assets/sheep.png" id="1_2t8l0"]
+[ext_resource type="Script" uid="uid://rr2x0k14x7pc" path="res://game/sheep.gd" id="2_gy1di"]
+
+[node name="Sheep" type="Sprite2D"]
+texture = ExtResource("1_2t8l0")
+script = ExtResource("2_gy1di")
+
+[node name="SheepGoTo" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_2t8l0")

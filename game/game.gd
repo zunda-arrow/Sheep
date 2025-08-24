@@ -4,13 +4,14 @@ var mouse_pos
 
 
 var truck_pos = Vector2(2, 2)
-@onready var sheepen: Array[Sheep] = [
-	$Sheep,
-	$Sheep2,
-]
+@onready var sheepen: Array[Sheep]
 
 func _ready() -> void:
 	mouse_pos = $TileMap.get_local_mouse_position()
+
+	for child in get_children():
+		if child is Sheep:
+			sheepen.push_back(child)
 
 func _process(delta: float) -> void:
 	for sheep in sheepen:
