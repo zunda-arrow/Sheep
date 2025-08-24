@@ -1,18 +1,16 @@
 extends Node2D
 class_name Sheep
 
-@onready var goto = $"../Sheep"
-
 @export var pos: Vector2i
 
 func _ready() -> void:
+	pos = $"../TileMap".local_to_map(position)
 	position = $"../TileMap".map_to_local(pos)
-	$Sheep.global_position = position
+	$SheepGoTo.visible = true
 
 func go(to: Vector2i):
 	pos = to
-	$"Sheep".global_position = $"../TileMap".map_to_local(to)
-
+	position = $"../TileMap".map_to_local(to)
 
 func preview(to: Vector2):
 	$"SheepGoTo".global_position = $"../TileMap".map_to_local(to)

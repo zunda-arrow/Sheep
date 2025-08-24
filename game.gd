@@ -5,7 +5,7 @@ var mouse_pos
 
 var truck_pos = Vector2(2, 2)
 @onready var sheepen: Array[Sheep] = [
-	$Sheep1,
+	$Sheep,
 	$Sheep2,
 ]
 
