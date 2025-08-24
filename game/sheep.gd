@@ -11,10 +11,11 @@ func _ready() -> void:
 func go(to: Vector2i, angle: float):
 	pos = to
 	position = $"../TileMap".map_to_local(to)
+	rotation = rotate_sheep(angle)
 
 func preview(to: Vector2, angle: float):
 	$"SheepGoTo".global_position = $"../TileMap".map_to_local(to)
-	$SheepGoTo.rotation = rotate_sheep(angle)
+	$SheepGoTo.global_rotation = rotate_sheep(angle)
 
 func rotate_sheep(facing: float):
 	return facing - (PI / 6)
