@@ -22,6 +22,11 @@ func _process(delta: float) -> void:
 		var goto = truck_go_to($TileMap.map_to_local(mouse_pos), $TileMap.map_to_local(sheep.pos))
 		sheep.preview($TileMap.local_to_map(goto))
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		for sheep in sheepen:
+			sheep.go($TileMap.local_to_map(truck_go_to(get_local_mouse_position(), $TileMap.map_to_local(sheep.pos))))
+
 func truck_go_to(mouse_pos: Vector2, truck_pos: Vector2) -> Vector2:
 	var angle_to_truck = mouse_pos.angle_to(truck_pos)
 

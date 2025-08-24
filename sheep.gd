@@ -9,6 +9,11 @@ func _ready() -> void:
 	position = $"../TileMap".map_to_local(pos)
 	$Sheep.global_position = position
 
+func go(to: Vector2i):
+	pos = to
+	$"Sheep".global_position = $"../TileMap".map_to_local(to)
+
+
 func preview(to: Vector2):
 	$"SheepGoTo".global_position = $"../TileMap".map_to_local(to)
 
