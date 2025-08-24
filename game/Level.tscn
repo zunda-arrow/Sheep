@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4wv1m2pigswx"]
+[gd_scene load_steps=15 format=4 uid="uid://4wv1m2pigswx"]
 
 [ext_resource type="Script" uid="uid://lmcihwyr16ob" path="res://game/game.gd" id="1_7mm0i"]
 [ext_resource type="Texture2D" uid="uid://b5xt2jac1shhj" path="res://assets/grass1.png" id="2_7k0uw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjnobcrj0ht66" path="res://icon.svg" id="5_8c4p7"]
 [ext_resource type="Script" uid="uid://cc12my3fudb5h" path="res://game/mouse_clicked.gd" id="6_btryw"]
 [ext_resource type="PackedScene" uid="uid://bsm5fyc441t35" path="res://game/Sheep.tscn" id="7_7k0uw"]
+[ext_resource type="Script" uid="uid://ssk73w4g0mld" path="res://managers/object_manager.gd" id="8_ba402"]
 
 [sub_resource type="Gradient" id="Gradient_ryrav"]
 colors = PackedColorArray(0.0823529, 0.109804, 0.0901961, 1, 0.0823529, 0.109804, 0.0901961, 1)
@@ -45,10 +46,9 @@ position = Vector2(1085.44, 547)
 scale = Vector2(9.37431, 1294)
 texture = SubResource("GradientTexture1D_eow3j")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAKAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAAsAAQAAAAAAAAAMAAwAAQAAAAAAAAAMAAsAAQAAAAAAAAANAAwAAQAAAAAAAAAMAAoAAQAAAAAAAAALAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAMAAkAAQAAAAAAAAALAAkAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAgAAQAAAAAAAAAKAAgAAQAAAAAAAAAKAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAcAAQAAAAAAAAAMAAgAAQAAAAAAAAAMAAcAAQAAAAAAAAANAAYAAgAAAAAAAAAMAAUAAQAAAAAAAAALAAUAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAYAAQAAAAAAAAAPAAgAAQAAAAAAAAAOAAgAAQAAAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAAAAAAOAAkAAQAAAAAAAAANAAcAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mwb40")
-format = 2
-layer_0/tile_data = PackedInt32Array(524298, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 524300, 1, 0, 524299, 1, 0, 458762, 1, 0, 393227, 1, 0, 458763, 1, 0, 458764, 1, 0, 524301, 1, 0, 589837, 1, 0, 524302, 1, 0, 458765, 2, 0, 393229, 2, 0, 393228, 3, 0, 327692, 1, 0, 327693, 1, 0, 393230, 1, 0, 458766, 3, 0, 524303, 1, 0, 589838, 1, 0, 655372, 1, 0, 720908, 1, 0, 720907, 1, 0, 720906, 1, 0, 655371, 1, 0, 655373, 1, 0, 786444, 1, 0, 786445, 1, 0, 786443, 1, 0, 327691, 1, 0, 327690, 1, 0, 393226, 1, 0, 458761, 1, 0, 393225, 1, 0, 458760, 1, 0)
 
 [node name="MouseClicked" type="Sprite2D" parent="."]
 modulate = Color(0.799517, 0, 0.213619, 1)
@@ -59,4 +59,8 @@ texture = ExtResource("5_8c4p7")
 script = ExtResource("6_btryw")
 
 [node name="Sheep" parent="." instance=ExtResource("7_7k0uw")]
+visible = false
 position = Vector2(961, 538)
+
+[node name="SheepManager" type="Node2D" parent="."]
+script = ExtResource("8_ba402")

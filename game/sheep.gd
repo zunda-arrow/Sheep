@@ -20,6 +20,6 @@ func preview(to: Vector2, angle: float):
 func rotate_sheep(facing: float):
 	return facing - (PI / 6)
 
-func move(tilemap: TileMap, to: Vector2):
+func move(tilemap: TileMapLayer, to: Vector2):
 	pos = to
 	return to
