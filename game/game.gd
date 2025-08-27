@@ -7,15 +7,6 @@ var truck_pos = Vector2(2, 2)
 @onready var sheepen: Array[Sheep]
 
 func _ready() -> void:
-	$SheepManager.set_tilemap($TileMap)
-	var obj = $SheepManager.place_object(
-		Vector2i(12, 9), 0, preload("res://assets/resources/objects/sheep.tres")
-	)
-	var timer = Timer.new()
-	add_child(timer)
-	timer.start(1)
-	timer.timeout.connect(func(): obj.rotation = (obj.rotation + 1) % 6)
-
 	mouse_pos = $TileMap.get_local_mouse_position()
 
 	for child in get_children():

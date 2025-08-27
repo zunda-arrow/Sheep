@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://4wv1m2pigswx"]
+[gd_scene load_steps=11 format=3 uid="uid://4wv1m2pigswx"]
 
 [ext_resource type="Script" uid="uid://lmcihwyr16ob" path="res://game/game.gd" id="1_7mm0i"]
-[ext_resource type="Texture2D" uid="uid://b5xt2jac1shhj" path="res://assets/grass1.png" id="2_7k0uw"]
-[ext_resource type="Texture2D" uid="uid://b6l5nn3pv3nc4" path="res://assets/fence.png" id="3_ba402"]
-[ext_resource type="Texture2D" uid="uid://i0i1nkqqic8a" path="res://assets/flagpost.png" id="4_gonph"]
+[ext_resource type="Script" uid="uid://b71dumj7fata1" path="res://managers/level_manager.gd" id="2_btryw"]
+[ext_resource type="TileSet" uid="uid://yd22minkhs84" path="res://grass_maps/tiles.tres" id="3_4vfpj"]
 [ext_resource type="Texture2D" uid="uid://cjnobcrj0ht66" path="res://icon.svg" id="5_8c4p7"]
+[ext_resource type="Script" uid="uid://cn1y8qxf4yvmw" path="res://game/alignment_map.gd" id="5_btryw"]
 [ext_resource type="Script" uid="uid://cc12my3fudb5h" path="res://game/mouse_clicked.gd" id="6_btryw"]
 [ext_resource type="PackedScene" uid="uid://bsm5fyc441t35" path="res://game/Sheep.tscn" id="7_7k0uw"]
 [ext_resource type="Script" uid="uid://ssk73w4g0mld" path="res://managers/object_manager.gd" id="8_ba402"]
@@ -15,29 +15,6 @@ colors = PackedColorArray(0.0823529, 0.109804, 0.0901961, 1, 0.0823529, 0.109804
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_eow3j"]
 gradient = SubResource("Gradient_ryrav")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
-resource_name = "Grass"
-texture = ExtResource("2_7k0uw")
-texture_region_size = Vector2i(70, 64)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eow3j"]
-texture = ExtResource("3_ba402")
-texture_region_size = Vector2i(70, 64)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5wjh"]
-texture = ExtResource("4_gonph")
-texture_region_size = Vector2i(1, 1)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_mwb40"]
-tile_shape = 3
-tile_size = Vector2i(74, 74)
-sources/1 = SubResource("TileSetAtlasSource_ryrav")
-sources/2 = SubResource("TileSetAtlasSource_eow3j")
-sources/3 = SubResource("TileSetAtlasSource_j5wjh")
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_7mm0i")
 
@@ -47,10 +24,14 @@ scale = Vector2(9.37431, 1294)
 texture = SubResource("GradientTexture1D_eow3j")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAKAAsAAQAAAAAAAAALAAwAAQAAAAAAAAALAAsAAQAAAAAAAAAMAAwAAQAAAAAAAAAMAAsAAQAAAAAAAAANAAwAAQAAAAAAAAAMAAoAAQAAAAAAAAALAAoAAQAAAAAAAAANAAoAAQAAAAAAAAAMAAkAAQAAAAAAAAALAAkAAQAAAAAAAAAKAAkAAQAAAAAAAAALAAgAAQAAAAAAAAAKAAgAAQAAAAAAAAAKAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAcAAQAAAAAAAAAMAAgAAQAAAAAAAAAMAAcAAQAAAAAAAAANAAYAAgAAAAAAAAAMAAUAAQAAAAAAAAALAAUAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAYAAQAAAAAAAAAPAAgAAQAAAAAAAAAOAAgAAQAAAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAAAAAAOAAkAAQAAAAAAAAANAAcAAgAAAAAAAAA=")
-tile_set = SubResource("TileSet_mwb40")
+tile_set = ExtResource("3_4vfpj")
+script = ExtResource("5_btryw")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("2_btryw")
 
 [node name="MouseClicked" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.799517, 0, 0.213619, 1)
 position = Vector2(826.164, 519.867)
 rotation = 0.876449
@@ -64,3 +45,14 @@ position = Vector2(961, 538)
 
 [node name="SheepManager" type="Node2D" parent="."]
 script = ExtResource("8_ba402")
+level_property = &"sheep"
+
+[node name="ObstacleManager" type="Node2D" parent="."]
+script = ExtResource("8_ba402")
+level_property = &"obstacles"
+
+[connection signal="set_alignment" from="TileMap" to="SheepManager" method="set_tilemap"]
+[connection signal="set_alignment" from="TileMap" to="ObstacleManager" method="set_tilemap"]
+[connection signal="set_level" from="LevelManager" to="TileMap" method="set_level"]
+[connection signal="set_level" from="LevelManager" to="SheepManager" method="load_level"]
+[connection signal="set_level" from="LevelManager" to="ObstacleManager" method="load_level"]

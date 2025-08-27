@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ManagedObject" load_steps=3 format=3 uid="uid://d1s831r7ok32p"]
+
+[ext_resource type="Script" uid="uid://vcuccpc71fr1" path="res://managers/managed_object.gd" id="1_0wh5d"]
+[ext_resource type="Texture2D" uid="uid://b6l5nn3pv3nc4" path="res://assets/fence.png" id="2_12vwo"]
+
+[resource]
+script = ExtResource("1_0wh5d")
+texture = ExtResource("2_12vwo")
+rotation_offset = 0.0
+metadata/_custom_type_script = "uid://vcuccpc71fr1"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ManagedObject" load_steps=3 format=3 uid="uid://ce5jo75bfa84b"]
+[gd_resource type="Resource" script_class="ManagedObject" load_steps=3 format=3 uid="uid://d28kt7l05vuc3"]
 
 [ext_resource type="Script" uid="uid://vcuccpc71fr1" path="res://managers/managed_object.gd" id="1_kesiu"]
 [ext_resource type="Texture2D" uid="uid://bf4untoam7oaj" path="res://assets/sheep.png" id="2_73h3q"]
