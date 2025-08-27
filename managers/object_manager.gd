@@ -63,4 +63,4 @@ func transform_object_at(from: Vector2i, to: Vector2i, rotation: int) -> void:
 
 ## Convert a value in radians to a managedObject's rotation value
 func rad_to_rot(angle: float) -> int:
-	return int(angle / (PI / 3.0)) + 4
+	return int(angle / (PI / 4)) + 1
