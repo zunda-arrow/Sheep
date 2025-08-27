@@ -60,3 +60,7 @@ func transform_object(object: ManagedObjectInstance, to: Vector2i, rotation: int
 ## Move and rotate an object that is currently at a given position.
 func transform_object_at(from: Vector2i, to: Vector2i, rotation: int) -> void:
 	transform_object(objects[from], to, rotation)
+
+## Convert a value in radians to a managedObject's rotation value
+func rad_to_rot(angle: float) -> int:
+	return int(angle / (PI / 3.0)) + 4

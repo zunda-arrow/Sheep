@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4wv1m2pigswx"]
+[gd_scene load_steps=12 format=3 uid="uid://4wv1m2pigswx"]
 
 [ext_resource type="Script" uid="uid://lmcihwyr16ob" path="res://game/game.gd" id="1_7mm0i"]
 [ext_resource type="Script" uid="uid://b71dumj7fata1" path="res://managers/level_manager.gd" id="2_btryw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cc12my3fudb5h" path="res://game/mouse_clicked.gd" id="6_btryw"]
 [ext_resource type="PackedScene" uid="uid://bsm5fyc441t35" path="res://game/Sheep.tscn" id="7_7k0uw"]
 [ext_resource type="Script" uid="uid://ssk73w4g0mld" path="res://managers/object_manager.gd" id="8_ba402"]
+[ext_resource type="Script" uid="uid://degua5rc0an0p" path="res://managers/sheep_manager.gd" id="8_gonph"]
 
 [sub_resource type="Gradient" id="Gradient_ryrav"]
 colors = PackedColorArray(0.0823529, 0.109804, 0.0901961, 1, 0.0823529, 0.109804, 0.0901961, 1)
@@ -44,7 +45,7 @@ visible = false
 position = Vector2(961, 538)
 
 [node name="SheepManager" type="Node2D" parent="."]
-script = ExtResource("8_ba402")
+script = ExtResource("8_gonph")
 level_property = &"sheep"
 
 [node name="ObstacleManager" type="Node2D" parent="."]
